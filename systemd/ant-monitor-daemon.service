@@ -2,12 +2,15 @@
 Description=ANTESPORTS Monitor LCD Daemon
 Documentation=https://github.com/coldwelderx/cooler-lcd-linux
 After=multi-user.target
+Before=shutdown.target reboot.target halt.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/ant-monitor-daemon
 Restart=always
 RestartSec=3
+TimeoutStopSec=3
+KillMode=control-group
 StandardOutput=journal
 StandardError=journal
 
