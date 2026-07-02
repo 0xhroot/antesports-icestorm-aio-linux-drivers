@@ -140,7 +140,10 @@ sent to the LCD has been verified against the original application's behavior.
 
 ## 📸 Screenshots
 
-<div align="center">
+<p align="center">
+  <img src="sc.png" alt="ANT Esports IceStorm AIO LCD Display" width="400">
+</p>
+
 
 ### Qt6 Desktop GUI
 
@@ -282,22 +285,25 @@ graph LR
 sequenceDiagram
     participant Daemon
     participant Sensors
+    participant Linux
     participant Protocol
     participant USB
     participant LCD
 
     loop Every 200ms
         Daemon->>Sensors: read_all()
-        Sensors->>Linux: /sys, /proc
-        Linux-->>Sensors: raw values
+        Sensors->>Linux: Read /sys and /proc
+        Linux-->>Sensors: Raw sensor values
         Sensors-->>Daemon: SensorValues
         Daemon->>Protocol: to_value_array()
-        Protocol-->>Daemon: [u8; 33]
+        Protocol-->>Daemon: Byte array (33 bytes)
         Daemon->>Protocol: build_refresh_frame()
-        Protocol-->>Daemon: Vec<u8> (65 bytes)
+        Protocol-->>Daemon: Byte vector (65 bytes)
         Daemon->>USB: device.write(frame)
-        USB-->>Daemon: Ok(())
-        Daemon->>Daemon: sleep(200ms)
+        USB-->>Daemon: OK
+        Daemon->>LCD: Refresh display
+        LCD-->>Daemon: Display updated
+        Daemon->>Daemon: Sleep (200 ms)
     end
 ```
 
