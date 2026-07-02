@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+members = [
+    "protocol",
+    "usb",
+    "sensors",
+    "ant-monitor-daemon",
+    "ant-monitor-gui",
+]
+
+[workspace.package]
+version = "1.0.0"
+edition = "2021"
+license = "MIT"

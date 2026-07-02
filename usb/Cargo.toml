@@ -1,0 +1,10 @@
+[package]
+name = "ant-monitor-usb"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+hidapi = "2"
+ant-monitor-protocol = { path = "../protocol" }
+log = "0.4"
+thiserror = "2"

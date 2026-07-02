@@ -1,0 +1,9 @@
+[package]
+name = "ant-monitor-sensors"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+ant-monitor-protocol = { path = "../protocol" }
+log = "0.4"
+thiserror = "2"

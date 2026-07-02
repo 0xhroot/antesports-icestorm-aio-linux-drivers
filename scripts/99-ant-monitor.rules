@@ -1,0 +1,10 @@
+# ANTESPORTS Monitor / Antec iUnity LCD cooler udev rules
+# Grant users access to the USB HID device without root
+
+# Classic protocol (Vevor/HT/Ant Esports)
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="5131", ATTRS{idProduct}=="2007", MODE="0666", TAG+="uaccess"
+KERNEL=="hidraw*", ATTRS{idVendor}=="5131", ATTRS{idProduct}=="2007", MODE="0666"
+
+# Antec iUnity protocol (Vortex View / Flux Pro)
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2022", ATTRS{idProduct}=="0522", MODE="0666", TAG+="uaccess"
+KERNEL=="hidraw*", ATTRS{idVendor}=="2022", ATTRS{idProduct}=="0522", MODE="0666"
